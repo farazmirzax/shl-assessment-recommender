@@ -11,7 +11,7 @@ load_dotenv()
 
 # Initialize Groq Client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-MODEL_NAME = "mixtral-8x7b-32768" # Fast, reliable reasoning for JSON outputs
+MODEL_NAME = "openai/gpt-oss-20b" # Fast, reliable reasoning for JSON outputs
 
 # Load FAISS and Metadata
 VECTOR_DIR = "vector_store"
