@@ -34,11 +34,15 @@ def build_index():
         search_text = f"Test Name: {name}. Type: {keys}. Job Levels: {levels}. Description: {desc}"
         documents.append(search_text)
         
+        # Clean the list into a string to satisfy Pydantic schema validation
+        raw_keys = item.get("keys", "Unknown")
+        test_type_str = ", ".join(raw_keys) if isinstance(raw_keys, list) else str(raw_keys)
+
         # Store the clean metadata so we can return exactly what the API schema demands
         metadata.append({
             "name": name,
             "url": item.get("link", ""),
-            "test_type": item.get("keys", "Unknown"),
+            "test_type": test_type_str,
             "languages": item.get("languages", ""),
             "duration": item.get("duration", ""),
             "description": desc
