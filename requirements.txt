@@ -1,0 +1,19 @@
+# API Framework (Loosened constraints for Python 3.13 compatibility)
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pydantic>=2.9.0
+
+# Data Ingestion & Scraping
+requests==2.32.3
+beautifulsoup4==4.12.3
+
+# Vector Store & Embeddings
+faiss-cpu>=1.9.0
+sentence-transformers>=3.0.0
+numpy>=1.26.0
+
+# LLM SDK
+groq==1.5.0
+
+# Utilities
+python-dotenv==1.0.1
