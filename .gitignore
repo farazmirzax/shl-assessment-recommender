@@ -1,0 +1,24 @@
+# Virtual Environments
+venv/
+env/
+
+# Secrets & Configuration
+.env
+
+# Python Cache & Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local Vector Database & Indexes
+vector_store/
+
+# Large Data Files (Optional: uncomment if you don't want to push the raw catalog)
+# data/shl_product_catalog.json
+# data/shl_catalog_raw.html
+
+# Editor & OS Files
+.vscode/
+.idea/
+.DS_Store
