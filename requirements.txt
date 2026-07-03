@@ -1,3 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
 # API Framework (Loosened constraints for Python 3.13 compatibility)
 fastapi>=0.115.0
 uvicorn>=0.30.0
