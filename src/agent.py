@@ -2,6 +2,16 @@ import os
 import json
 import faiss
 import numpy as np
+
+# --- 512MB RAM LIMIT FIX FOR RENDER ---
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+import torch
+torch.set_num_threads(1)
+torch.set_grad_enabled(False) 
+# --------------------------------------
+
 from sentence_transformers import SentenceTransformer
 from groq import Groq
 from dotenv import load_dotenv
@@ -23,7 +33,8 @@ index = faiss.read_index(INDEX_PATH)
 with open(METADATA_PATH, "r", encoding="utf-8") as f:
     metadata = json.load(f)
 
-embedder = SentenceTransformer('all-MiniLM-L6-v2')
+# Force CPU mode to keep memory footprint tightly boxed
+embedder = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
 
 def retrieve_assessments(query: str, top_k: int = 10) -> list:
     """Searches the FAISS index for the most relevant assessments."""
